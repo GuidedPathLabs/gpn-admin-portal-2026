@@ -590,12 +590,12 @@ function sendHeight() {
   const topBar = document.querySelector('.top-bar');
   const active = document.querySelector('.section.active');
   if (!topBar || !active) return;
-  const h = topBar.offsetHeight + active.scrollHeight + 60;
+  const h = topBar.offsetHeight + active.scrollHeight + 120;
   window.parent.postMessage({ type:'gpn-resize', height: h }, '*');
 }
 window.addEventListener('load', sendHeight);
 window.addEventListener('resize', sendHeight);
-new MutationObserver(sendHeight).observe(document.body, { childList:true, subtree:true });
+new MutationObserver(function(){ setTimeout(sendHeight, 100); }).observe(document.body, { childList:true, subtree:true });
 
 // ── INIT ──
 loadStudents();
