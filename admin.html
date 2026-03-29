@@ -590,7 +590,7 @@ function sendHeight() {
   const topBar = document.querySelector('.top-bar');
   const active = document.querySelector('.section.active');
   if (!topBar || !active) return;
-  const h = topBar.offsetHeight + active.scrollHeight + 60;
+  const h = topBar.offsetHeight + active.scrollHeight + 150;
   window.parent.postMessage({ type:'gpn-resize', height: h }, '*');
 }
 window.addEventListener('load', sendHeight);
